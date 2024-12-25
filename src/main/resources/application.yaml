@@ -1,0 +1,31 @@
+spring:
+    application:
+        name: app-server
+
+    jpa:
+        database: POSTGRESQL
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
+        generate-ddl: true
+
+    datasource:
+        hikari:
+            max-lifetime: 60000
+            idle-timeout: 60000
+            maximum-pool-size: 10
+            connection-timeout: 10000
+        url: ${DB_URL}
+        username: ${DB_USERNAME}
+        password: ${DB_PASSWORD}
+    
+logging:
+    level:
+        root: INFO
+
+server:
+    port: 5000
+
