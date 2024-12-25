@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "feedback", indexes = {
-        @Index(name = "feedback", columnList = "uuid")
+        @Index(name = "feedback_secure_id", columnList = "uuid")
 })
 public class Feedback extends BaseEntity {
 
