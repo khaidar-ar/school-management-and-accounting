@@ -1,15 +1,20 @@
 package com.project.school_management_and_accounting.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "school", indexes = {
         @Index(name = "school_secure_id", columnList = "uuid")
@@ -34,5 +39,8 @@ public class School extends BaseEntity {
 
     @Column(name = "theme", nullable = false)
     private String theme;
+
+    @OneToMany(mappedBy = "school")
+    private List<SchoolClass> classes;
 
 }

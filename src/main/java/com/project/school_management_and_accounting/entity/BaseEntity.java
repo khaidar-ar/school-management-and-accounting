@@ -12,6 +12,7 @@ import lombok.Data;
 @MappedSuperclass
 public abstract class BaseEntity {
 
+    @Column(name = "uuid", nullable = false, unique = true)
     private String uuid = UUID.randomUUID().toString();
 
     @Column(name = "deleted", nullable = false, columnDefinition = "boolean default false")
