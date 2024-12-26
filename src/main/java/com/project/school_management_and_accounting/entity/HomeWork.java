@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -24,8 +25,9 @@ public class HomeWork extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "file_path")
-    private String filePath;
+    @Lob
+    @Column(name = "file")
+    private Byte[] file;
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;

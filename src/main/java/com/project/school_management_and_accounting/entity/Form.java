@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -27,8 +28,9 @@ public class Form extends BaseEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "file_path")
-    private String filePath;
+    @Lob
+    @Column(name = "file")
+    private Byte[] file;
 
     @ManyToOne
     @JoinColumn(name = "school_id", nullable = false)
