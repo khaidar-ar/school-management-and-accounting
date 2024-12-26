@@ -75,7 +75,7 @@ public class User extends BaseEntity {
 
     @Lob
     @Column(name = "profile_picture")
-    private Byte[] profilePicture;
+    private byte[] profilePicture;
 
     @Column(name = "verified", columnDefinition = "boolean default false", nullable = false)
     private Boolean verified;
