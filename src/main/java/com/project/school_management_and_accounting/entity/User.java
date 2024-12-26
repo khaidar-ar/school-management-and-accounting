@@ -51,8 +51,9 @@ public class User extends BaseEntity {
     @Column(name = "code", nullable = true)
     private Integer code;
 
-    @OneToMany(mappedBy = "userApp")
-    private List<StudentInfo> studentCode;
+    @ManyToOne
+    @JoinColumn(name = "student_code")
+    private User studentCode;
 
     @Column(name = "gender", nullable = false)
     @Enumerated(EnumType.STRING)
