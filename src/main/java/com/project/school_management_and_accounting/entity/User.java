@@ -1,7 +1,5 @@
 package com.project.school_management_and_accounting.entity;
 
-import java.util.List;
-
 import com.project.school_management_and_accounting.enums.BloodGroup;
 import com.project.school_management_and_accounting.enums.Gender;
 
