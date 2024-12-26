@@ -4,11 +4,11 @@ import java.time.LocalDate;
 
 import org.springframework.http.HttpStatus;
 
-public record Response(
-        String url,
-        LocalDate timestamp,
-        HttpStatus status,
-        String message
+public record Response<T>(
+                String url,
+                LocalDate timestamp,
+                HttpStatus status,
+                T message
 
 ) {
 }
