@@ -1,5 +1,7 @@
 package com.project.school_management_and_accounting.entity;
 
+import java.util.List;
+
 import com.project.school_management_and_accounting.enums.BloodGroup;
 import com.project.school_management_and_accounting.enums.Gender;
 
@@ -95,8 +97,8 @@ public class User extends BaseEntity {
     @JoinColumn(name = "department_id")
     private Department department;
 
-    @OneToMany(mappedBy = "stripped_id")
-    private Payment stripe;
+    @OneToMany(mappedBy = "user")
+    private List<Payment> stripe;
 
     @Column(name = "card_brand")
     private String cardBrand;

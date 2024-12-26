@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -17,10 +18,10 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "payment",indexes = {
-    @Index(name="payment_secure_id",columnList = "uuid")
+@Table(name = "payment", indexes = {
+        @Index(name = "payment_secure_id", columnList = "uuid")
 })
-public class Payment extends BaseEntity{
+public class Payment extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,11 +34,12 @@ public class Payment extends BaseEntity{
     @Column(name = "payment_status")
     private String paymentStatus;
 
-    @Column(name="amout")
+    @Column(name = "amout")
     private Double amount;
 
-    @OneToMany(mappedBy = "stripe")
-    private List<User> users;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "charge_for")
     private String chargeFor;
