@@ -1,8 +1,6 @@
 package com.project.school_management_and_accounting.service.impl;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
