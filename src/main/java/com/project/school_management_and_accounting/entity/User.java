@@ -86,19 +86,18 @@ public class User extends BaseEntity {
     private String rememberToken;
 
     @ManyToOne
-    @JoinColumn(name = "school_id", nullable = false)
+    @JoinColumn(name = "school_id")
     private School school;
 
     @ManyToOne
-    @JoinColumn(name = "section_id", nullable = false)
+    @JoinColumn(name = "section_id")
     private Section section;
 
     @ManyToOne
-    @JoinColumn(name = "department_id", nullable = false)
+    @JoinColumn(name = "department_id")
     private Department department;
 
-    @ManyToOne
-    @JoinColumn(name = "stripe_id")
+    @OneToMany(mappedBy = "stripped_id")
     private Payment stripe;
 
     @Column(name = "card_brand")
