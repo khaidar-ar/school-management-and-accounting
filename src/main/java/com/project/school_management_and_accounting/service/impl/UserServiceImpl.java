@@ -2,11 +2,11 @@ package com.project.school_management_and_accounting.service.impl;
 
 import java.io.IOException;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.school_management_and_accounting.dto.request.UserCreateRequest;
-import com.project.school_management_and_accounting.dto.response.Response;
 import com.project.school_management_and_accounting.dto.response.UserResponse;
 import com.project.school_management_and_accounting.entity.User;
 import com.project.school_management_and_accounting.enums.BloodGroup;
@@ -24,8 +24,10 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    private final ModelMapper modelMapper;
+
     @Override
-    public Response<UserResponse> create(UserCreateRequest dto, MultipartFile file) throws IOException {
+    public UserResponse create(UserCreateRequest dto, MultipartFile file) throws IOException {
         log.info("start - create user | {}", this.getClass().toString());
         User user = new User();
         user.setName(dto.name());
@@ -47,7 +49,9 @@ public class UserServiceImpl implements UserService {
         user.setCardBrand(dto.cardBrand());
         user.setCardLastFour(dto.cardLastFour());
         userRepository.save(user);
-        return null;
+        UserResponse userResponse = UserResponse.builder().build();
+        modelMapper.map(dto, userResponse);
+        return userResponse;
     }
 
 }
